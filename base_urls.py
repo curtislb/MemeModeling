@@ -22,16 +22,19 @@ def count_base_urls(file):
 
 
 def main(argv):
-   parser = argparse.ArgumentParser(description='Read in memetracker data, make models')
-   parser.add_argument('-i','--input', help='Input file name',required=True)
-   args = parser.parse_args()
+    parser = argparse.ArgumentParser(description='Read in memetracker data, make models')
+    parser.add_argument('-i','--input', help='Input file name',required=True)
+    args = parser.parse_args()
 
-   base_urls = count_base_urls(args.input)
-   #sample thing
-   print 'base urls:'
-   sorted_base_urls = sorted(base_urls.items(), key=operator.itemgetter(1), reverse=True)
-   for url, count in sorted_base_urls:
-    print '{:<50} {:5}'.format(url, count)
+    base_urls = count_base_urls(args.input)
+    tot = 0
+    print 'BASE URLS:'
+    sorted_base_urls = sorted(base_urls.items(), key=operator.itemgetter(1), reverse=True)
+    for url, count in sorted_base_urls:
+        print '{:<50} {:5}'.format(url, count)
+        tot += count
+    print '{:<50} {:5}'.format('TOTAL', tot)
+
 
 
 
