@@ -1,0 +1,42 @@
+'''                                                                                                                                                                                
+beta.py                                                                                                                                                                            
+-uses read.py and Entry.py to read in a file and parse it                                                                                                                          
+-calculates the typical time domain frequency of hyper links                                                                                                                       
+'''
+
+import numpy as np
+import matplotlib.pyplot as plt
+from Entry import Entry
+import read
+import time
+
+fn = '/Users/evematthaey/Documents/ELE381/finalproject/testsample2.txt'
+ents = read.open_and_test(fn)
+
+pat = '%Y-%m-%d %H:%M:%S'
+firsttime = '' + ents[0].timestamp # in secs since 1970, firsttime = 1217563233                                                                                                    
+fs = int(time.mktime(time.strptime(firsttime, pat)))
+lasttime = '' + ents[-1].timestamp
+ls = int(time.mktime(time.strptime(lasttime, pat)))
+T=ls-fs+1
+
+#print T
+
+numlinks = np.zeros(ls-fs+1) # will be index by time: i = # secs since first meme in dataset                                                                                       
+
+for i in range
+
+for ent in ents:
+   timestr = '' + ent.timestamp
+   t = int(time.mktime(time.strptime(timestr, pat)))
+   numlinks[t-fs] = numlinks[t-fs] + len(ent.links)  # sum all hyperlinks created in that second                                                                                   
+
+print numlinks[1:100]
+
+plt.figure()
+plt.plot(range(0,T), numlinks)
+plt.xlabel('seconds since August 1, 2008')
+plt.ylabel('number of hyperlinks created')
+plt.yscale('log')
+plt.show()
+plt.close()
