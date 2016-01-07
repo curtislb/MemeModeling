@@ -1,5 +1,8 @@
 from urlparse import urlparse
 
+def base_url(url): #not done
+    return '{uri.scheme}://{uri.netloc}/'.format(uri=urlparse(url))
+
 class Entry:
    'Model for memetracker entries (one per line)'
    numEntries = 0
@@ -58,6 +61,6 @@ class Entry:
     return s
 
    def get_base_url(self): #not done
-      parsed_uri = urlparse(self.url)
-      domain = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_uri)
-      return domain
+      return base_url(self.url)
+
+
