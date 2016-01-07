@@ -25,7 +25,8 @@ def get_infected_times(filename, meme):
 
                         for link in entry.links:
                             link_domain = base_url(link)
-                            if link_domain in domain_times:
+                            if (link_domain != entry_domain
+                                and link_domain in domain_times):
                                 domain_times[link_domain][1] = entry.timestamp
 
     return domain_times
