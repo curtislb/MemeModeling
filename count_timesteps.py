@@ -58,6 +58,11 @@ def count_timesteps(len_time_unit, start_time, domain_times):
     return S, I, R
 
 def graph_SIR(S, I, R):
+    tot = S[0] + I[0] + R[0]
+    I = [i*1./tot for i in I]
+    S = [s*1./tot for s in S]
+    R = [r*1./tot for r in R]
+
     # now plot the graph of S, I, R over STEPS
     p1, = plt.plot(range(total_timesteps), I, label='infected')
     p2, = plt.plot(range(total_timesteps), S, label='susceptible')
