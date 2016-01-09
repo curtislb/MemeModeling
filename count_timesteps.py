@@ -1,10 +1,14 @@
 import dateutil.parser as dt_parser
 import datetime as dt
+import matplotlib.pyplot as plt
 """
 takes len_time_unit in seconds, and domain_times dict.
 takes start_time string, i.e. when is the beginning of the timerange we're dealing with (e.g. '2008-08-01', '2008-08-01 00:00:01')
 returns 3 arrays S, I, R: S[0] is the number susceptible at timestep 0, etc.
 """
+
+total_timesteps = 40
+
 def count_timesteps(len_time_unit, start_time, domain_times):
 
     len_t = dt.timedelta(seconds=len_time_unit)
@@ -16,7 +20,7 @@ def count_timesteps(len_time_unit, start_time, domain_times):
 
     # while loop to go through each timeslot
     t = 0
-    while(t < 365): #stop after a year
+    while(t < total_timesteps): #stop after a year
         t_min = init_t + t * len_t
         t_max = init_t + (t+1) * len_t
 
@@ -52,4 +56,16 @@ def count_timesteps(len_time_unit, start_time, domain_times):
         t += 1
 
     return S, I, R
+
+def graph_SIR(S, I, R):
+    # now plot the graph of S, I, R over STEPS
+    p1, = plt.plot(range(total_timesteps), I, label='infected')
+    p2, = plt.plot(range(total_timesteps), S, label='susceptible')
+    p3, = plt.plot(range(total_timesteps), R, label='recovered')
+    plt.title('SIR values over all steps')
+    plt.legend([p1, p2, p3])
+    axes = plt.gca()
+    axes.set_xlabel('steps')
+    axes.set_ylabel('values of SIR')
+    plt.show()
 
