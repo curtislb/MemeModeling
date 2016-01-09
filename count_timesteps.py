@@ -7,7 +7,7 @@ takes start_time string, i.e. when is the beginning of the timerange we're deali
 returns 3 arrays S, I, R: S[0] is the number susceptible at timestep 0, etc.
 """
 
-total_timesteps = 40
+total_timesteps = 31
 
 def count_timesteps(len_time_unit, start_time, domain_times):
 
@@ -63,7 +63,7 @@ def graph_SIR(S, I, R):
     p2, = plt.plot(range(total_timesteps), S, label='susceptible')
     p3, = plt.plot(range(total_timesteps), R, label='recovered')
     plt.title('SIR values over all steps')
-    plt.legend([p1, p2, p3])
+    plt.legend()
     axes = plt.gca()
     axes.set_xlabel('steps')
     axes.set_ylabel('values of SIR')
