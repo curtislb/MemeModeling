@@ -6,18 +6,18 @@ import matplotlib.pyplot as plt
 """
 to run: python infection.py -h
 """
-DEFAULT_EPS = 0.01
-DEFAULT_BETA = 0.6
-DEFAULT_GAMMA = 0.1
-DEFAULT_STEPS = 100
+DEFAULT_EPS = 1 #there is no eps?? 0.2 spreads it well tho
+DEFAULT_BETA = 3.60000
+DEFAULT_GAMMA = 2.03283970531
+DEFAULT_STEPS = 31
 
 EPS = 0.0
 BETA = 0.0
 GAMMA = 0.0
 STEPS = 0
 
-INITIAL_I = 0.3
-INITIAL_S = 0.68
+INITIAL_I = 0.01
+INITIAL_S = 0.99
 INITIAL_R = 1 - INITIAL_I - INITIAL_S
 
 def next_S(S, I):
@@ -51,7 +51,7 @@ def graph(I, S, R):
     p2, = plt.plot(range(STEPS), S, label='susceptible')
     p3, = plt.plot(range(STEPS), R, label='recovered')
     plt.title('SIR values over all steps')
-    plt.legend([p1, p2, p3])
+    plt.legend()
     axes = plt.gca()
     axes.set_xlabel('steps')
     axes.set_ylabel('values of SIR')
