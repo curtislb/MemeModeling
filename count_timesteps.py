@@ -44,10 +44,10 @@ def count_timesteps(len_time_unit, start_time, domain_times):
 
             if (t_max < infect_time):
                 num_S += 1
-            elif (infect_time < t_max and t_max < recover_time):
+            elif ((infect_time < t_max and t_max < recover_time) or recover_time < t_max) :
                 num_I += 1
-            elif (recover_time < t_max):
-                num_R += 1
+            # elif (recover_time < t_max):
+            #     num_R += 1
 
         S.append(num_S)
         I.append(num_I)
