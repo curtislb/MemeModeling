@@ -1,7 +1,7 @@
 # domain_times = get_infected_times('sample-10000.txt','the')
 import cPickle as pickle
 # open the pickled dictionary of infected domains                                                             
-with open('russia_aug.pickle', 'rb') as handle:
+with open('lipstick_aug.pickle', 'rb') as handle:
     infectdomains = pickle.load(handle)    
 len_time_unit = 86400
 start_time = '2008-08-01'
